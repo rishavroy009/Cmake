@@ -1,0 +1,19 @@
+cmake_minimum_required(VERSION 3.10)
+project(JsonParser)
+
+# Set C++ standard
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# Find pbnjson package
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(PBNJSON REQUIRED pbnjson_cpp)
+
+# Include pbnjson headers
+include_directories(${PBNJSON_INCLUDE_DIRS})
+
+# Add executable
+add_executable(json_parser json_parser.cpp)
+
+# Link pbnjson libraries
+target_link_libraries(json_parser ${PBNJSON_LIBRARIES})
